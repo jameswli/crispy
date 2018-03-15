@@ -1,0 +1,41 @@
+<section class="content-header">
+  <h1>Dashboard <small>Version 0.1</small></h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="box box-default">
+        <div class="box-header ui-sortable-handle">
+          <i class="fa fa-video-camera"></i>
+          <h3 class="box-title">Live streams</h3>
+        </div>
+        <div class="box-body">
+          <table class="table no-margin">
+            <tr>
+              <th>Name</th>
+              <th>RTSP</th>
+            </tr>
+           
+            <% @streams.each do |stream| %>
+              <tr>
+                <td><%= stream.name %></td>
+                <td><%= stream.rtsp %></td>
+                <td><%= link_to 'Show', stream_path(stream) %></td>
+                <td><%= link_to 'Edit', edit_stream_path(stream) %></td>
+                <td><%= link_to 'Destroy', stream_path(stream),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </table>
+
+          <%= link_to "New Stream", new_stream_path, :class=>'button pull-right btn btn-default' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  </div>  
+  <div class="row">
+  </div>  
+</section>

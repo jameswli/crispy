@@ -1,12 +1,12 @@
-<div class="main-sidebar">
-  <div class="sidebar">
+<aside class="main-sidebar">
+  <section class="sidebar">
     <div class="user-panel">
       <div class="pull-left image">
         <img alt="User Image" class="user-image" src="http://placehold.it/160x160" />
       </div>
       <div class="pull-left info">
         <p>
-          User Name
+          James W. Li
         </p>
         <a href="#">
           <i class="fa fa-circle text-success">
@@ -23,9 +23,15 @@
         </i></button></span>
       </div>
     </form>
-    <ul class="sidebar-menu">
+    <ul class="sidebar-menu tree" data-widget="tree">
       <li class="header">
-        HEADER
+        Navigation Menu
+      </li>
+      <li>
+        <%= link_to root_path, :class=>"" do%>
+          <i class="fa fa-dashboard"></i>
+          <span>Dashboard</span>
+        <% end %>
       </li>
       <li class="treeview">
         <a href="#">
@@ -34,39 +40,46 @@
           <span>Streams</span>
         </a>
         <ul class="treeview-menu">
-          <li>
-            <%= link_to "Stream 1", activity_mine_url %>
-          </li>
-          <li>
-            <%= link_to "Stream 2", activity_feed_url %>
-          </li>
-          <li>
-            <a href="#"> Stream 3</a>
-          </li>
-          <li>
-            <a href="#"> Stream 4</a>
-          </li>
+          <% @streams.each do |stream| %>
+            <li>
+              <%= link_to stream.name, stream_path(stream) %>
+            </li>
+          <% end %>          
         </ul>
       </li>
       <li>
-        <a href="#">
-        <span>Another Link</span>
-        </a>
+        <%= link_to "#", :class=>"" do%>
+          <i class="fa fa-bolt"></i>
+          <span>Static</span>
+        <% end %>
       </li>
       <li class="treeview">
-        <a href="#">
-          <span>Multilevel</span>
-          <i class="fa fa-angle-left pull-right">
-          </i></a>
-          <ul class="treeview-menu">
-            <li>
-              <a href="#"> Link in level 2</a>
-            </li>
-            <li>
-              <a href="#"> Link in level 2</a>
-            </li>
+        <%= link_to "#", :class=>"" do%>
+          <i class="fa fa-bomb"></i>
+            <span>Dynamic</span>
+            <i class="fa fa-angle-left pull-right">
+            </i>
+            <ul class="treeview-menu">
+              <% @streams.each do |stream| %>
+              <li>
+                <%= link_to stream.name, "#" %>
+              </li>
+            <% end %> 
+          <% end %>
         </ul>
       </li>
+      <li>
+        <%= link_to "#", :class=>"" do%>
+          <i class="fa fa-car"></i>
+          <span>Video</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "#", :class=>"" do%>
+          <i class="fa fa-user"></i>
+          <span>SenseID</span>
+        <% end %>
+      </li>
     </ul>
-  </div>
-</div>
+  </section>
+</aside>
